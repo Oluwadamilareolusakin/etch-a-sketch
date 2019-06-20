@@ -6,11 +6,9 @@ const creatediv = (numberofdivs) =>{
     let h = Math.floor(window.innerHeight/(numberofdivs));
     let div = document.createElement('div');
     div.classList.add('child-div');
-    div.setAttribute('style', `border: 1px solid black;color:black; Height:${h}px; 
-        Width:${w}px;padding:0; margin:0; background:rgba(0,0,0,0);`);
-    
-    
-    container.append(div);
+    //Remove 2px from the width and height to accomodate for the borders.
+    div.setAttribute('style', `Height:${h-2}px; Width:${w-2}px; background:rgba(0,0,0,0);`);
+    container.appendChild(div);
 }
 
 const drawGird = (numberofdivs) =>{
