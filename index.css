@@ -4,12 +4,33 @@
 }
 
 #main-container{
-    position: absolute;
     display: block;
     padding: 0;
-    margin: 0;
+    margin: auto;
+    box-sizing: border-box;
+    width: 50%;
+    height: 40%;
+}
+
+#grid-container{
+    float: left;
+    width: 70%;
+    height: 70%;
+    margin: auto;
+}
+
+#sketch-controls{
+    float: right;
+    width: 10%;
+    padding: 2em 2em;
+    text-align: center;
 }
 .child-div{
     border: 1px solid black;
     float: left;
+}
+
+button{
+    padding: 1em 2em;
+    margin: auto;
 }
