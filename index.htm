@@ -2,31 +2,22 @@
 <html>
     <head>
         <link rel="stylesheet" href="index.css">
-        
-    </head>
+        <script src="index.js"></script>
+    </head>   
+    
     <body>
-    <div id="main-container">
-        <div id="grid-container">
-            <div id="default">
+        <div id="main-container" class="flex-container">
+            <h1>Etch-A-Sketch</h1>
+            <h3>Hone your pixelated drawing skills</h3>
 
-            </div>
-            <div id="custom">
+            <div id="grid-container">
                 
             </div>
-        </div>
-        <div id="sketch-controls">
-            <div>
-                <button id="reset">Reset the sketchpad</button>
+            <div id="color-option-holder">
+                <input type="text" id="color-option" placeholder="Enter a color Hex code (#000000)">
+                <button id="change-color">Change Color</button>
+                <button id="clear-grid">Clear Grid</button>
             </div>
-            <div>
-                <button id="black" class="color-control">Black pen</button>
-            </div>
-            <div>
-                <button id="random" class="color-control">Random colored pen</button>
-            </div>
-        </div>
-    </div>
-    
-    <script src="index.js"></script>
+        </div>  
     </body>
 </html>

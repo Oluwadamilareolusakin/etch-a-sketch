@@ -1,66 +1,62 @@
-const creatediv = (numberofdivs,container) =>{
-    let w = Math.floor(window.innerWidth/(numberofdivs));
-    let h = Math.floor(window.innerHeight/(numberofdivs));
-    let div = document.createElement('div');
-    div.classList.add('child-div');
-    //Remove 2px from the width and height to accomodate for the borders.
-    div.setAttribute('style', `Height:${h-2}px; Width:${w-2}px; background:rgba(0,0,0,0);`);
-    container.appendChild(div);
-    return oldcontainer = container;
-}
+function game(){
+    this.color = '#000000';
+    this.pixels = document.querySelectorAll('.babydiv')
 
-const drawGrid = (numberofdivs,container) =>{
-    let x =0;
-    while(x < numberofdivs){
-        for(i=numberofdivs; i > 0; i--){
-            creatediv(numberofdivs,container);
-        }
-        x++
+    this.createDiv = (numberofdivs) =>{
+       const div = document.createElement('div')
+       const gridContainer = document.querySelector('div#grid-container');
+       div.classList.add('babydiv')
+       const w = gridContainer.offsetWidth / 50
+       const h = gridContainer.offsetHeight / numberofdivs
+       div.setAttribute('style', `width: ${w}px; height: ${w/2}px; float: left`)
+       
+       gridContainer.append(div)
     }
-    
-}
 
-const resetGrid = (e) =>{
-    if(e.target.id !== 'reset') return;
-    while(oldcontainer.firstChild){
-        oldcontainer.firstChild.remove();
-    }
-    let custom = document.getElementById('custom')
-    let numberofdivs= parseInt(prompt("Enter a measurement for your sketch pad, e.g 64x64"));
-    drawGrid(numberofdivs,custom);
-    const divs = document.querySelectorAll('.child-div');
-    divs.forEach(div => div.addEventListener('mouseover',draw));
-    
-}
-
-
-const changeColor = (e) =>{
-    if(e.target.className !== 'color-control') return;
-    if(e.target.id==='black'){
-        hex = '#000000'
-    } else if(e.target.id === 'random'){
-        hex = '#'
-        for(let i = 0; i < 6; i++){
-            let colorvalue = Math.random().toString(16)
-            hex+=colorvalue;
+    this.changeColor = (e) =>{
+        if(e.target.id !== 'change-color') return;
+        hexCode = document.querySelector('#color-option').value
+        if(hexCode.length === 7){
+            this.setColor(hexCode)
+        } else {
+            return;
         }
     }
-    return color = hex;
+    this.setColor = (color) =>{
+        this.color = color;
+    }
+
+    this.drawGrid = (numberofdivs) =>{
+        for(let i = 0; i < numberofdivs; i++){
+            this.createDiv(numberofdivs)
+        }
+    }
+
+    this.draw = (e) =>{
+        if(e.target.className !== 'babydiv') return;
+        e.target.classList.add('.drawn')
+        console.log('draw')
+        e.target.style.background = this.color
+    }
+
+    this.clearGrid = (e) =>{
+        if(e.target.id !== 'clear-grid') return;
+        color = 'aquamarine';
+        const pixels = document.querySelectorAll('.babydiv')
+        pixels.forEach(pixel => pixel.style.background = color);
 }
 
-const draw = (e) =>{
-    e.target.style.background = color
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
-    const reset = document.querySelector('#reset')
-    reset.addEventListener('click',resetGrid);
-    const divs = document.querySelectorAll('.child-div');
-    divs.forEach(div => div.addEventListener('mouseover',draw));
-    const colorbuttons = document.querySelectorAll('.color-control');
-    colorbuttons.forEach(button=> button.addEventListener('click',changeColor));
-    return color = '#000000'
-})
-    
-const defaultcontainer = document.getElementById('default');
-drawGrid(50,defaultcontainer);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const play = new game();
+    play.drawGrid(2000);
+    const pixels = document.querySelectorAll('.babydiv')
+    pixels.forEach(pixel => pixel.addEventListener('mouseover', play.draw))
+    pixels.forEach(pixel => pixel.addEventListener('touchmove', play.draw))
+    const clearGrid = document.querySelector('#clear-grid');
+    clearGrid.addEventListener('click', play.clearGrid)
+    const changeColor = document.querySelector('#change-color');
+    changeColor.addEventListener('click', play.changeColor)
+});
