@@ -77,3 +77,7 @@ div#grid-container{
 #change-color, #clear-grid{
     background-color: bisque;
 }
+
+footer{
+    margin-top: 3em;
+}
