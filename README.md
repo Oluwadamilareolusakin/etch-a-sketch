@@ -3,4 +3,4 @@
 
 > This is a simple sketchpad to hone your pixelated drawing skills. I wrote it in Vanilla JS, no frameworks, no tooling.
 
-###### [Try it out here](oluwadamilareolusakin.github.io/etch-a-sketch) :smile
+###### [Try it out here](oluwadamilareolusakin.github.io/etch-a-sketch) :smiles:
