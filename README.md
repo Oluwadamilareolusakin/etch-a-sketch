@@ -1,7 +1,7 @@
 # A Sketch Pad in Vanilla JS
 ## By Tolulope Olusakin
 
-> This is a simple sketchpad I wrote it in Vanilla JS, no frameworks, no tooling, to hone your pixelated drawing skills.
+> This is a simple sketchpad I wrote it in Vanilla JS, no frameworks, no tooling, to help you hone your pixelated drawing skills.
 
 ### [Give it a try](https://oluwadamilareolusakin.github.io/etch-a-sketch/) 
 
